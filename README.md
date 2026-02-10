@@ -7,17 +7,17 @@ Zero external dependencies — Python 3.10+ stdlib only.
 ## Quick Start
 
 ```bash
-# Export all Bear notes to a new Obsidian vault
-python3 -m obsidibear init ~/obsidian-vault
+# From the obsidibear directory:
+python3 run.py init ~/obsidian-vault
 
 # Open the vault in Obsidian, then check for changes anytime
-python3 -m obsidibear status --vault ~/obsidian-vault
+python3 run.py status --vault ~/obsidian-vault
 
 # Pull new/changed Bear notes into the vault
-python3 -m obsidibear pull --vault ~/obsidian-vault
+python3 run.py pull --vault ~/obsidian-vault
 
 # Push Obsidian edits back to Bear
-python3 -m obsidibear push --vault ~/obsidian-vault
+python3 run.py push --vault ~/obsidian-vault
 ```
 
 ## Commands
@@ -27,8 +27,8 @@ python3 -m obsidibear push --vault ~/obsidian-vault
 First-time export. Creates the vault directory, exports all non-trashed/non-encrypted Bear notes, copies attachments, and writes sync state.
 
 ```bash
-python3 -m obsidibear init ~/obsidian-vault
-python3 -m obsidibear init ~/obsidian-vault --bear-db /path/to/database.sqlite  # custom DB path
+python3 run.py init ~/obsidian-vault
+python3 run.py init ~/obsidian-vault --bear-db /path/to/database.sqlite  # custom DB path
 ```
 
 ### `status`
@@ -36,8 +36,8 @@ python3 -m obsidibear init ~/obsidian-vault --bear-db /path/to/database.sqlite  
 Shows what changed since last sync — Bear-side changes, Obsidian-side edits, conflicts, new notes, and deletions.
 
 ```bash
-python3 -m obsidibear status                       # auto-finds vault from cwd
-python3 -m obsidibear status --vault ~/obsidian-vault
+python3 run.py status                       # auto-finds vault from cwd
+python3 run.py status --vault ~/obsidian-vault
 ```
 
 ### `pull`
@@ -45,7 +45,7 @@ python3 -m obsidibear status --vault ~/obsidian-vault
 Pulls new and modified Bear notes into the vault. Skips conflicts (changed on both sides) and warns you.
 
 ```bash
-python3 -m obsidibear pull --vault ~/obsidian-vault
+python3 run.py pull --vault ~/obsidian-vault
 ```
 
 ### `push`
@@ -53,8 +53,8 @@ python3 -m obsidibear pull --vault ~/obsidian-vault
 Pushes Obsidian edits back to Bear via `bear://x-callback-url`. Bear must be installed. Runs in background (`open -g`) with a 0.5s delay between notes.
 
 ```bash
-python3 -m obsidibear push --vault ~/obsidian-vault
-python3 -m obsidibear push --vault ~/obsidian-vault --dry-run  # preview only
+python3 run.py push --vault ~/obsidian-vault
+python3 run.py push --vault ~/obsidian-vault --dry-run  # preview only
 ```
 
 ## How It Works

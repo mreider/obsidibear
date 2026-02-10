@@ -84,7 +84,7 @@ def _resolve_vault(vault_arg: str = None) -> Path:
         if (p / ".obsidibear.json").exists():
             return p
 
-    print("Error: No vault found. Run 'obsidibear init <path>' first,")
+    print("Error: No vault found. Run 'python3 run.py init <path>' first,")
     print("or use --vault to specify the vault path.")
     sys.exit(1)
 
@@ -190,9 +190,9 @@ def cmd_status(args):
         )
         print(f"\n{total} changes total.")
         if changes.bear_changed or changes.new_in_bear:
-            print("Run 'obsidibear pull' to sync Bear → Obsidian")
+            print("Run 'python3 run.py pull' to sync Bear → Obsidian")
         if changes.obsidian_changed:
-            print("Run 'obsidibear push' to sync Obsidian → Bear")
+            print("Run 'python3 run.py push' to sync Obsidian → Bear")
 
     finally:
         conn.close()
